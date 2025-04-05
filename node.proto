@@ -1,0 +1,16 @@
+// node.proto
+syntax = "proto3";
+
+package node;
+
+
+message Empty {}
+
+message CheckResponse {
+  bool available = 1;
+  string message = 2;
+}
+
+service NodeService {
+  rpc CheckNode(Empty) returns (CheckResponse);
+}
