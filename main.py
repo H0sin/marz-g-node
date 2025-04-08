@@ -21,7 +21,9 @@ def serve():
     private_key, certificate_chain = asyncio.run(load_tls_credentials())
 
     server_credentials = grpc.ssl_server_credentials(
-        [(private_key, certificate_chain)]
+        [(private_key, certificate_chain)],
+        root_certificates=None,
+        require_client_auth=False
     )
 
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
