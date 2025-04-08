@@ -3,7 +3,6 @@ syntax = "proto3";
 
 package node;
 
-
 message Empty {}
 
 message CheckResponse {
