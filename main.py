@@ -1,7 +1,5 @@
 import asyncio
-import time
 from concurrent import futures
-
 import grpc
 
 import node_pb2
@@ -11,10 +9,11 @@ from credentials import load_tls_credentials
 
 class NodeServiceServicer(node_pb2_grpc.NodeServiceServicer):
     def CheckNode(self, request, context):
-        is_available = True
-        message = "Destination node is available"
-        print("Received a CheckNode request.")
-        return node_pb2.CheckResponse(available=is_available, message=message)
+        print("✅ Received a CheckNode request")
+        return node_pb2.CheckResponse(
+            available=True,
+            message="Node is available via TLS"
+        )
 
 
 def serve():
@@ -28,12 +27,10 @@ def serve():
 
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     node_pb2_grpc.add_NodeServiceServicer_to_server(NodeServiceServicer(), server)
-
     server.add_secure_port('[::]:50051', server_credentials)
 
-    print("✅ gRPC server started with TLS on port 50051")
+    print("\U0001F680 gRPC server started with TLS on port 50051")
     server.start()
-
     server.wait_for_termination()
 
 
