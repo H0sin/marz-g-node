@@ -5,6 +5,7 @@ import grpc
 import node_pb2
 import node_pb2_grpc
 from credentials import load_tls_credentials
+from helpers.interface import add_interface_file
 
 
 class NodeServiceServicer(node_pb2_grpc.NodeServiceServicer):
@@ -18,13 +19,14 @@ class NodeServiceServicer(node_pb2_grpc.NodeServiceServicer):
     def AddInterface(self, request, context):
         print("🛠️ AddInterface called")
         print(f"  ↪️ Name: {request.name}")
-        print(f"  ↪️ IP: {request.ip}")
-        print(f"  ↪️ Description: {request.description}")
+
+        add_interface_file(request)
 
         return node_pb2.AddInterfaceResponse(
             success=True,
             message=f"Interface '{request.name}' added successfully"
         )
+
 
 def serve():
     private_key, certificate_chain = asyncio.run(load_tls_credentials())
