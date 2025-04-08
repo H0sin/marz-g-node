@@ -39,12 +39,23 @@ class NodeServiceStub(object):
                 request_serializer=node__pb2.Empty.SerializeToString,
                 response_deserializer=node__pb2.CheckResponse.FromString,
                 _registered_method=True)
+        self.AddInterface = channel.unary_unary(
+                '/node.NodeService/AddInterface',
+                request_serializer=node__pb2.AddInterfaceRequest.SerializeToString,
+                response_deserializer=node__pb2.AddInterfaceResponse.FromString,
+                _registered_method=True)
 
 
 class NodeServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def CheckNode(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def AddInterface(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -57,6 +68,11 @@ def add_NodeServiceServicer_to_server(servicer, server):
                     servicer.CheckNode,
                     request_deserializer=node__pb2.Empty.FromString,
                     response_serializer=node__pb2.CheckResponse.SerializeToString,
+            ),
+            'AddInterface': grpc.unary_unary_rpc_method_handler(
+                    servicer.AddInterface,
+                    request_deserializer=node__pb2.AddInterfaceRequest.FromString,
+                    response_serializer=node__pb2.AddInterfaceResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -86,6 +102,33 @@ class NodeService(object):
             '/node.NodeService/CheckNode',
             node__pb2.Empty.SerializeToString,
             node__pb2.CheckResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def AddInterface(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/node.NodeService/AddInterface',
+            node__pb2.AddInterfaceRequest.SerializeToString,
+            node__pb2.AddInterfaceResponse.FromString,
             options,
             channel_credentials,
             insecure,

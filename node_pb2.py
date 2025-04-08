@@ -24,17 +24,23 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\nnode.proto\x12\x04node\"\x07\n\x05\x45mpty\"3\n\rCheckResponse\x12\x11\n\tavailable\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t2<\n\x0bNodeService\x12-\n\tCheckNode\x12\x0b.node.Empty\x1a\x13.node.CheckResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\nnode.proto\x12\x04node\"\x07\n\x05\x45mpty\"3\n\rCheckResponse\x12\x11\n\tavailable\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"\xa9\x02\n\x13\x41\x64\x64InterfaceRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06pre_up\x18\x02 \x01(\x05\x12\x0f\n\x07post_up\x18\x03 \x01(\x05\x12\x10\n\x08pre_down\x18\x04 \x01(\x05\x12\x11\n\tpost_down\x18\x05 \x01(\x05\x12\x13\n\x0blisten_port\x18\x06 \x01(\x05\x12\x13\n\x0bprivate_key\x18\x07 \x01(\t\x12\x12\n\npublic_key\x18\x08 \x01(\t\x12\x16\n\x0eupload_percent\x18\t \x01(\x02\x12\x18\n\x10\x64ownload_percent\x18\n \x01(\x02\x12%\n\x06status\x18\x0b \x01(\x0e\x32\x15.node.InterfaceStatus\x12\x13\n\x0bsave_config\x18\x0c \x01(\x08\x12\x12\n\nip_address\x18\r \x01(\t\"8\n\x14\x41\x64\x64InterfaceResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t*,\n\x0fInterfaceStatus\x12\x0c\n\x08\x44ISABLED\x10\x00\x12\x0b\n\x07\x45NABLED\x10\x01\x32\x83\x01\n\x0bNodeService\x12-\n\tCheckNode\x12\x0b.node.Empty\x1a\x13.node.CheckResponse\x12\x45\n\x0c\x41\x64\x64Interface\x12\x19.node.AddInterfaceRequest\x1a\x1a.node.AddInterfaceResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'node_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
+  _globals['_INTERFACESTATUS']._serialized_start=440
+  _globals['_INTERFACESTATUS']._serialized_end=484
   _globals['_EMPTY']._serialized_start=20
   _globals['_EMPTY']._serialized_end=27
   _globals['_CHECKRESPONSE']._serialized_start=29
   _globals['_CHECKRESPONSE']._serialized_end=80
-  _globals['_NODESERVICE']._serialized_start=82
-  _globals['_NODESERVICE']._serialized_end=142
+  _globals['_ADDINTERFACEREQUEST']._serialized_start=83
+  _globals['_ADDINTERFACEREQUEST']._serialized_end=380
+  _globals['_ADDINTERFACERESPONSE']._serialized_start=382
+  _globals['_ADDINTERFACERESPONSE']._serialized_end=438
+  _globals['_NODESERVICE']._serialized_start=487
+  _globals['_NODESERVICE']._serialized_end=618
 # @@protoc_insertion_point(module_scope)

@@ -15,6 +15,16 @@ class NodeServiceServicer(node_pb2_grpc.NodeServiceServicer):
             message="Node is available via TLS"
         )
 
+    def AddInterface(self, request, context):
+        print("🛠️ AddInterface called")
+        print(f"  ↪️ Name: {request.name}")
+        print(f"  ↪️ IP: {request.ip}")
+        print(f"  ↪️ Description: {request.description}")
+
+        return node_pb2.AddInterfaceResponse(
+            success=True,
+            message=f"Interface '{request.name}' added successfully"
+        )
 
 def serve():
     private_key, certificate_chain = asyncio.run(load_tls_credentials())

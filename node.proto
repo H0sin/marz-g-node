@@ -1,8 +1,10 @@
-// node.proto
 syntax = "proto3";
 
 package node;
 
+// ========================
+// General health check
+// ========================
 message Empty {}
 
 message CheckResponse {
@@ -12,4 +14,34 @@ message CheckResponse {
 
 service NodeService {
   rpc CheckNode(Empty) returns (CheckResponse);
+  rpc AddInterface(AddInterfaceRequest) returns (AddInterfaceResponse);
+}
+
+// ========================
+// Interface Management
+// ========================
+enum InterfaceStatus {
+  DISABLED = 0;
+  ENABLED = 1;
+}
+
+message AddInterfaceRequest {
+  string name = 1;
+  int32 pre_up = 2;
+  int32 post_up = 3;
+  int32 pre_down = 4;
+  int32 post_down = 5;
+  int32 listen_port = 6;
+  string private_key = 7;
+  string public_key = 8;
+  float upload_percent = 9;
+  float download_percent = 10;
+  InterfaceStatus status = 11;
+  bool save_config = 12;
+  string ip_address = 13;
+}
+
+message AddInterfaceResponse {
+  bool success = 1;
+  string message = 2;
 }
