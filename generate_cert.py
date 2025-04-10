@@ -1,5 +1,8 @@
+from pathlib import Path
+
 from OpenSSL import crypto
 import os
+
 
 def generate_certificate(ip_address: str, cert_dir: str = "certs") -> None:
     """
@@ -42,5 +45,15 @@ def generate_certificate(ip_address: str, cert_dir: str = "certs") -> None:
 
 
 if __name__ == "__main__":
-    ip = os.getenv("IP_ADDRESS", "127.0.0.1")
-    generate_certificate(ip)
+    try:
+        ip = os.getenv("IP_ADDRESS", "127.0.0.1")
+
+        if not (Path("certs/server.key").is_file() and Path("certs/server.cer").is_file()):
+            print("generate new cer file please changed")
+            generate_certificate(ip)
+        else:
+            print("old file is true")
+
+    except:
+        print("when generate cert file occurred error.")
+        raise

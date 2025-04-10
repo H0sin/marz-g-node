@@ -8,7 +8,7 @@ docker run \
   --user root \
   -e IP_ADDRESS=167.235.20.19 \
   -p 50051:50051 \
-  -v /certs/:/usr/src/marz-g-node/certs \
+  -v /root/certs/marz-g-node:/usr/src/marz-g-node/certs \
   -v /etc/rc.local:/etc/rc.local \
   --restart always \
   --privileged \
