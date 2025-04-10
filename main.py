@@ -20,7 +20,7 @@ class NodeServiceServicer(node_pb2_grpc.NodeServiceServicer):
         print("🛠️ AddInterface called")
         print(f"  ↪️ Name: {request.name}")
 
-        add_interface_file(request)
+        asyncio.run(add_interface_file(request))
 
         return node_pb2.AddInterfaceResponse(
             success=True,
