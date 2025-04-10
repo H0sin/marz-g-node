@@ -48,7 +48,7 @@ if __name__ == "__main__":
     try:
         ip = os.getenv("IP_ADDRESS", "127.0.0.1")
 
-        if not (Path("certs/server.key").is_file() and Path("certs/server.cer").is_file()):
+        if not (Path("certs/server.key").is_file() and Path("certs/server.crt").is_file()):
             print("generate new cer file please changed")
             generate_certificate(ip)
         else:
