@@ -3,7 +3,7 @@ docker stop marz-g-node
 docker rm marz-g-node
 docker build -t marz-g-node .
 
-docker run -d \
+docker run \
   --name marz-g-node \
   --user root \
   -e IP_ADDRESS=167.235.20.19 \
